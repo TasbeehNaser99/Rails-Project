@@ -88,9 +88,6 @@ Weekly Plans is a Ruby on Rails application for users to create, organize, and m
 - **SQLite3**: Default development database.
 - **Stimulus (optional)**: For adding interactive JavaScript components.
 
-## Screenshots
-
-Add screenshots here to show what the app looks like.
 
 ## License
 
