@@ -1,0 +1,16 @@
+<h1>Weekly Plans</h1>
+
+<%= link_to 'New Week', new_week_path, class: "btn btn-primary" %>
+
+<% @weeks.each do |week| %>
+    <div class="week">
+     <% if week.start_date.present? %>
+    <h2><%= link_to "Week starting on #{week.start_date.strftime('%B %d, %Y')}", week_path(week) %></h2>
+    <% else %>
+   <h2><%= link_to "Week starting on (no date)", week_path(week) %></h2>
+  <% end %>
+   <p>Category: <%= week.category.name %></p>
+     <%= link_to 'Show', week_path(week), class: "btn btn-secondary" %>
+     <%= link_to 'Edit', edit_week_path(week), class: "btn btn-warning" %>
+   </div>
+ <% end %>

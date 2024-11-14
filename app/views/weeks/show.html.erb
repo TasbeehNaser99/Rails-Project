@@ -1,0 +1,28 @@
+<h1>
+    Week starting on 
+  <% if @week.start_date.present? %>
+     <%= @week.start_date.strftime('%B %d, %Y') %>
+   <% else %>
+   (No start date available)
+  <% end %>
+</h1>
+<p>Category: <%= @week.category.name %></p>
+
+<h2>Goal</h2>
+<% if @week.goal %>
+    <p><strong>Goal Title:</strong> <%= @week.goal.title %></p>
+    <p><strong>Goal Description:</strong> <%= @week.goal.description %></p>
+ <% else %>
+    <p>No goal set for this week.</p>
+ <% end %>
+
+ <h2>Tasks</h2>
+  <%= link_to 'New Task', new_week_task_path(@week), class: "btn btn-primary" %>
+  <% @week.tasks.each do |task| %>     <div>
+      <h3><%= link_to task.title, [@week, task] %></h3>
+      <p><strong>Date:</strong> <%= task.date %></p>
+      <p><%= task.description %></p>
+   </div>
+  <% end %>
+  <%= link_to 'Edit Week', edit_week_path(@week), class: "btn btn-warning" %>
+  <%= link_to 'Back to Weeks', weeks_path, class: "btn btn-secondary" %>
