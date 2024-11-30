@@ -1,0 +1,29 @@
+<h1>
+      Week starting on
+        <% if @week.start_date.present? %>
+               <%= @week.start_date.strftime('%B %d, %Y') %>
+                  <% else %>
+                       (No start date available)
+                         <% end %>
+</h1>
+
+<%= form_with(model: [@week, @task], local: true) do |form| %>
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+     </div>
+
+     <div class="field">
+       <%= form.label :date %>
+       <%= form.date_field :date %>
+     </div>
+
+     <div class="field">
+       <%= form.label :description %>
+       <%= form.text_area :description %>
+     </div>
+
+     <%= form.submit 'Create Task', class: "btn btn-primary" %>
+     <% end %>
+
+   <%= link_to 'Back to Tasks', week_tasks_path(@week), class: "btn btn-secondary" %>

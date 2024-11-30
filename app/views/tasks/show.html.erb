@@ -1,0 +1,6 @@
+<h1>Task: <%= @task.title %></h1>
+<p><strong>Date:</strong> <%= @task.date %></p>
+<p><%= @task.description %></p>
+
+<%= link_to 'Edit Task', edit_week_task_path(@week, @task), class: "btn btn-warning" %>
+<%= link_to 'Back to Tasks', week_tasks_path(@week), class: "btn btn-secondary" %>

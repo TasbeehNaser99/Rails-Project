@@ -1,0 +1,17 @@
+<h1>New Week</h1>
+
+<%= form_with(model: @week, local: true) do |form| %>
+    <div class="field">
+       <%= form.label :start_date %>
+       <%= form.date_field :start_date %>
+     </div>
+
+     <div class="field">
+        <%= form.label :category_id %>
+        <%= form.collection_select :category_id, Category.all, :id, :name %>
+     </div>
+
+      <%= form.submit 'Create Week', class: "btn btn-primary" %>
+  <% end %>
+
+  <%= link_to 'Back to Weeks', weeks_path, class: "btn btn-secondary" %>

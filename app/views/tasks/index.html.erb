@@ -1,0 +1,16 @@
+<h1>Tasks for Week starting on <%= @week.start_date.strftime('%B %d, %Y') %></h1>
+
+<%= link_to 'New Task', new_week_task_path(@week), class: "btn btn-primary" %>
+
+<% @tasks.each do |task| %>
+    <div>
+     <h3><%= link_to task.title, [@week, task] %></h3>
+     <p><strong>Date:</strong> <%= task.date %></p>
+     <p><%= task.description %></p>
+     <%= link_to 'Show', [@week, task], class: "btn btn-secondary" %>
+     <%= link_to 'Edit', edit_week_task_path(@week, task), class: "btn btn-warning" %>
+     <%= link_to 'Delete', [@week, task], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </div>
+   <% end %>
+
+   <%= link_to 'Back to Week', week_path(@week), class: "btn btn-secondary" %>
